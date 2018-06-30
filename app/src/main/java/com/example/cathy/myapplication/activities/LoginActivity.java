@@ -87,6 +87,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         switch (v.getId()) {
             case R.id.appCompatButtonLogin:
                 verifyFromSQLite();
+                Intent intentToProfile = new Intent(getApplicationContext(), IndexActivity.class);
+                startActivity(intentToProfile);
                 break;
             case R.id.textViewLinkRegister:
                 // Navigate to RegisterActivity
