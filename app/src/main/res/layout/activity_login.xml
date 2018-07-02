@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:gravity="center"
-            android:text="EquiTrend"
+            android:text="@string/equitrend"
             android:textColor="@android:color/white"
             android:textSize="60sp"
             android:textStyle="bold"
@@ -37,9 +37,10 @@
             android:layout_marginBottom="0dp"
             android:layout_marginLeft="80dp"
             android:layout_marginTop="10dp"
-            android:text="Welcomes you!"
+            android:text="@string/welcome"
             android:textSize="30sp"
-            app:fontFamily="cursive" />
+            app:fontFamily="cursive"
+            android:layout_marginStart="80dp" />
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/textInputLayoutEmail"

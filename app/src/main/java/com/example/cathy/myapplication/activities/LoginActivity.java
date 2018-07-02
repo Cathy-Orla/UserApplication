@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.cathy.myapplication.R;
 import com.example.cathy.myapplication.com.example.cathy.myapplication.helpers.InputValidation;
@@ -87,8 +88,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         switch (v.getId()) {
             case R.id.appCompatButtonLogin:
                 verifyFromSQLite();
-                Intent intentToProfile = new Intent(getApplicationContext(), IndexActivity.class);
-                startActivity(intentToProfile);
+                Intent intentToIndex = new Intent(getApplicationContext(), IndexActivity.class);
+                startActivity(intentToIndex);
                 break;
             case R.id.textViewLinkRegister:
                 // Navigate to RegisterActivity
