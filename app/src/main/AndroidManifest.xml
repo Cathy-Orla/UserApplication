@@ -26,7 +26,9 @@
             android:name=".activities.UsersListActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".activities.IndexActivity" />
-        <activity android:name=".activities.ProfileActivity"></activity>
+        <activity android:name=".activities.ProfileActivity" />
+        <activity android:name=".activities.EditDetails" />
+        <activity android:name=".activities.EquineProfileActivity"></activity>
     </application>
 
 </manifest>

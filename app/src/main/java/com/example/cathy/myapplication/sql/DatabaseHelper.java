@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.cathy.myapplication.model.User;
+import com.example.cathy.myapplication.model.Profile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,22 +16,36 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     //version, database name and table name
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "UserManager.db";
-    private static final String TABLE_USER = "user";
 
-    // User Table Columns names
+
+    private static final String TABLE_USER = "user";
     private static final String COLUMN_USER_ID = "user_id";
     private static final String COLUMN_USER_NAME = "user_name";
     private static final String COLUMN_USER_EMAIL = "user_email";
     private static final String COLUMN_USER_PASSWORD = "user_password";
 
+    private static final String TABLE_PROFILE = "profile";
+    private static final String COLUMN_PROFILE_ID = "profile_id";
+    private static final String COLUMN_PROFILE_NAME = "profile_name";
+    private static final String COLUMN_PROFILE_DAM = "profile_dam";
+    private static final String COLUMN_PROFILE_SIRE = "profile_sire";
+    private static final String COLUMN_PROFILE_AGE = "profile_age";
+    private static final String COLUMN_PROFILE_GENDER= "profile_gender";
+    private static final String COLUMN_PROFILE_PADDOCK = "profile_paddock";
+
     // create table
     private String CREATE_USER_TABLE = "CREATE TABLE " + TABLE_USER + "("
             + COLUMN_USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_USER_NAME + " TEXT,"
             + COLUMN_USER_EMAIL + " TEXT," + COLUMN_USER_PASSWORD + " TEXT" + ")";
+    //creating profiles table
+    private String CREATE_PROFILE_TABLE = "CREATE TABLE " + TABLE_PROFILE + "(" + COLUMN_PROFILE_ID
+            + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_PROFILE_NAME + "TEXT," + COLUMN_PROFILE_DAM
+            + "TEXT," + COLUMN_PROFILE_SIRE + "TEXT," + COLUMN_PROFILE_AGE + "TEXT," + COLUMN_PROFILE_GENDER + "TEXT,"
+            + COLUMN_PROFILE_PADDOCK + "TEXT," + ")";
 
     // drop table
     private String DROP_USER_TABLE = "DROP TABLE IF EXISTS " + TABLE_USER;
-
+    private String DROP_PROFILE_TABLE = "DROP TABLE IF EXISTS " + TABLE_PROFILE;
     // constructor
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -39,6 +54,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_USER_TABLE);
+        db.execSQL(CREATE_PROFILE_TABLE);
     }
 
     @Override
@@ -46,6 +62,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
         //Drop User Table if exist and create table again
         db.execSQL(DROP_USER_TABLE);
+        db.execSQL(DROP_PROFILE_TABLE);
         onCreate(db);
 
     }
@@ -176,13 +193,6 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         return false;
     }
 
-    /**
-     * This method to check user exist or not
-     *
-     * @param email
-     * @param password
-     * @return true/false
-     */
     public boolean checkUser(String email, String password) {
 
         // array of columns to fetch
@@ -219,5 +229,29 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         }
 
         return false;
+    }
+
+   /* public static void changePassword(String password, String email) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.rawQuery("UPDATE "+DatabaseHelper.TABLE_USER+" SET "
+                +DatabaseHelper.COLUMN_USER_PASSWORD
+                +" = '"+password+"' WHERE "+ DatabaseHelper.COLUMN_USER_EMAIL+" = ?",new String[]{email}); *This is the input on form
+    }*/
+   // ----------------- PROFILE TABLE METHODS ---------------------------
+
+    public void addProfile(Profile profile) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_PROFILE_NAME, profile.getName());
+        values.put(COLUMN_PROFILE_DAM, profile.getDam());
+        values.put(COLUMN_PROFILE_SIRE, profile.getSire());
+        values.put(COLUMN_PROFILE_AGE, profile.getAge());
+        values.put(COLUMN_PROFILE_GENDER, profile.getGender());
+        values.put(COLUMN_PROFILE_PADDOCK, profile.getPaddock());
+
+        // Inserting Row
+        db.insert(TABLE_PROFILE, null, values);
+        db.close();
     }
 }

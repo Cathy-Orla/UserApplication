@@ -22,12 +22,21 @@
     <string name="text_title">User Database</string>
     <string name="equitrend">EquiTrend</string>
     <string name="welcome">Welcomes You!</string>
+    <string name="submit">Submit</string>
+    <string name="changePass">Change Your Password</string>
+    <string name="gender">Gender</string>
+    <string name="paddock">Paddock</string>
+    <string name="age">Age</string>
+    <string name="name">Name</string>
+    <string name="dam">Dam</string>
+    <string name="sire">Sire</string>
+
     <string-array name="menu">
         <item>Settings</item>
         <item>Logout</item>
         <item>Edit Details</item>
     </string-array>
-    <string-array name = "gender">
+    <string-array name="gender">
         <item>Male</item>
         <item>Female</item>
     </string-array>

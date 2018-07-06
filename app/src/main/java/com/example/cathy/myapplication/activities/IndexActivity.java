@@ -103,7 +103,8 @@ public class IndexActivity extends AppCompatActivity implements View.OnClickList
                 finish();
                 break;
             case 2:
-                // edit login details activity
+                Intent intentEdit = new Intent(getApplicationContext(), EditDetails.class);
+                startActivity(intentEdit);
                 break;
         }
     }
