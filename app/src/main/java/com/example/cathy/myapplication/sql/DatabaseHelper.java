@@ -11,7 +11,7 @@ import com.example.cathy.myapplication.model.Profile;
 
 import java.util.ArrayList;
 import java.util.List;
-public class DatabaseHelper extends SQLiteOpenHelper{
+public class DatabaseHelper extends SQLiteOpenHelper {
 
     //version, database name and table name
     private static final int DATABASE_VERSION = 1;
@@ -30,7 +30,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     private static final String COLUMN_PROFILE_DAM = "profile_dam";
     private static final String COLUMN_PROFILE_SIRE = "profile_sire";
     private static final String COLUMN_PROFILE_AGE = "profile_age";
-    private static final String COLUMN_PROFILE_GENDER= "profile_gender";
+    private static final String COLUMN_PROFILE_GENDER = "profile_gender";
     private static final String COLUMN_PROFILE_PADDOCK = "profile_paddock";
 
     // create table
@@ -41,11 +41,12 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     private String CREATE_PROFILE_TABLE = "CREATE TABLE " + TABLE_PROFILE + "(" + COLUMN_PROFILE_ID
             + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_PROFILE_NAME + "TEXT," + COLUMN_PROFILE_DAM
             + "TEXT," + COLUMN_PROFILE_SIRE + "TEXT," + COLUMN_PROFILE_AGE + "TEXT," + COLUMN_PROFILE_GENDER + "TEXT,"
-            + COLUMN_PROFILE_PADDOCK + "TEXT," + ")";
+            + COLUMN_PROFILE_PADDOCK + "TEXT" + ")";
 
     // drop table
     private String DROP_USER_TABLE = "DROP TABLE IF EXISTS " + TABLE_USER;
     private String DROP_PROFILE_TABLE = "DROP TABLE IF EXISTS " + TABLE_PROFILE;
+
     // constructor
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -67,7 +68,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
     }
 
-   //creates user record
+    //creates user record
     public void addUser(User user) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -237,7 +238,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 +DatabaseHelper.COLUMN_USER_PASSWORD
                 +" = '"+password+"' WHERE "+ DatabaseHelper.COLUMN_USER_EMAIL+" = ?",new String[]{email}); *This is the input on form
     }*/
-   // ----------------- PROFILE TABLE METHODS ---------------------------
+    // ----------------- PROFILE TABLE METHODS ---------------------------
 
     public void addProfile(Profile profile) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -254,4 +255,57 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         db.insert(TABLE_PROFILE, null, values);
         db.close();
     }
+
+    public List<Profile> getAllProfile() {
+        // creating a new list to retrieve horse details
+        String[] columns = {
+                COLUMN_PROFILE_ID,
+                COLUMN_PROFILE_NAME,
+                COLUMN_PROFILE_DAM,
+                COLUMN_PROFILE_SIRE,
+                COLUMN_PROFILE_AGE,
+                COLUMN_PROFILE_GENDER,
+                COLUMN_PROFILE_PADDOCK
+        };
+        // sorting by ascending order
+        String sortOrder =
+                COLUMN_PROFILE_ID + " ASC";
+        List<Profile> profileList = new ArrayList<Profile>(); //creating instance
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        // queries for the profile table
+
+        Cursor cursor = db.query(TABLE_PROFILE, //Table to query
+                columns,    //columns to return
+                null,        //columns for the WHERE clause
+                null,        //The values for the WHERE clause
+                null,       //group the rows
+                null,       //filter by row groups
+                sortOrder); //The sort order
+
+
+        // Traversing through all rows and adding to list, calling setter methods
+        if (cursor.moveToFirst()) {
+            do {
+                Profile profile = new Profile();
+                profile.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex(COLUMN_PROFILE_ID))));
+                profile.setName(cursor.getString(cursor.getColumnIndex(COLUMN_PROFILE_NAME)));
+                profile.setDam(cursor.getString(cursor.getColumnIndex(COLUMN_PROFILE_DAM)));
+                profile.setSire(cursor.getString(cursor.getColumnIndex(COLUMN_PROFILE_SIRE)));
+                profile.setAge(cursor.getString(cursor.getColumnIndex(COLUMN_PROFILE_AGE)));
+                profile.setGender(cursor.getString(cursor.getColumnIndex(COLUMN_PROFILE_GENDER)));
+                profile.setPaddock(cursor.getString(cursor.getColumnIndex(COLUMN_PROFILE_PADDOCK)));
+                // Adding user record to list
+                profileList.add(profile); //add objects to list
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+
+        // return profile list
+        return profileList;
+    }
+
 }
+

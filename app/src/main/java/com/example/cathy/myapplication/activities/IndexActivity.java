@@ -9,20 +9,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatTextView;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.cathy.myapplication.MainActivity;
+
 import com.example.cathy.myapplication.R;
-import com.example.cathy.myapplication.com.example.cathy.myapplication.helpers.InputValidation;
-import com.example.cathy.myapplication.model.User;
 import com.example.cathy.myapplication.sql.DatabaseHelper;
 
-import java.util.List;
 
 
 public class IndexActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
@@ -31,10 +27,9 @@ public class IndexActivity extends AppCompatActivity implements View.OnClickList
 
     private AppCompatButton newProfile;
     private AppCompatButton editDetails;
-    private AppCompatTextView profileHeader;
-    private AppCompatTextView horseProfiles;
-    private RecyclerView profilesList;
-    private List<User> listHorses;
+    private AppCompatButton accessProfilesButton;
+    /*private AppCompatTextView profileHeader;
+    private AppCompatTextView horseProfiles;*/
     private DatabaseHelper databaseHelper;
 
 
@@ -57,22 +52,26 @@ public class IndexActivity extends AppCompatActivity implements View.OnClickList
         initObjects();
     }
 
+
     @SuppressLint("WrongViewCast")
-    //look into button vs appcombatbutton, appcombat is a descendent of button
     private void initViews() {
 
         newProfile = (AppCompatButton) findViewById(R.id.newProfile);
-        profileHeader = (AppCompatTextView) findViewById(R.id.profileHeader);
+       /* profileHeader = (AppCompatTextView) findViewById(R.id.profileHeader);
         horseProfiles = (AppCompatTextView) findViewById(R.id.horseProfiles);
-        profilesList = (RecyclerView) findViewById(R.id.profilesList);
+        //profilesList = (RecyclerView) findViewById(R.id.profilesList);*/
+        accessProfilesButton = (AppCompatButton) findViewById(R.id.accessProfilesButton);
         Toast.makeText(IndexActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
     }
 
     private void initListeners() {
+
         newProfile.setOnClickListener(this);
+        accessProfilesButton.setOnClickListener(this);
     }
 
     private void initObjects() {
+
         databaseHelper = new DatabaseHelper(activity);
     }
 
@@ -87,17 +86,21 @@ public class IndexActivity extends AppCompatActivity implements View.OnClickList
                 Intent intentNewHorse = new Intent(getApplicationContext(), ProfileActivity.class);
                 startActivity(intentNewHorse);
                 break;
+            case R.id.accessProfilesButton:
+                Intent intentToProfile = new Intent(getApplicationContext(), EquineProfileActivity.class);
+                startActivity(intentToProfile);
+                break;
             //case R.id.editDetails:
 
         }
     }
-
+    //methods for drop down menu
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
         switch (i) {
             case 0:
-                //settings
+                finish();//settings --- change this later
                 break;
             case 1:
                 finish();

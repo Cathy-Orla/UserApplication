@@ -88,8 +88,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         switch (v.getId()) {
             case R.id.appCompatButtonLogin:
                 verifyFromSQLite();
-                Intent intentToIndex = new Intent(getApplicationContext(), IndexActivity.class);
-                startActivity(intentToIndex);
+                Intent intentToMain = new Intent(getApplicationContext(), MainPageActivity.class);
+                startActivity(intentToMain);
                 break;
             case R.id.textViewLinkRegister:
                 // Navigate to RegisterActivity
@@ -117,7 +117,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 , textInputEditTextPassword.getText().toString().trim())) {
 
 
-            Intent accountsIntent = new Intent(activity, UsersListActivity.class);
+          Intent accountsIntent = new Intent(activity, UsersListActivity.class);
             accountsIntent.putExtra("EMAIL", textInputEditTextEmail.getText().toString().trim());
             emptyInputEditText();
             startActivity(accountsIntent);

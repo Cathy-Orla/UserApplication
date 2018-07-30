@@ -30,7 +30,7 @@ public class UsersListActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_users_list);
-        getSupportActionBar().setTitle("");
+        getSupportActionBar().setTitle("EquiTrend");
         initViews();
         initObjects();
 
@@ -64,11 +64,12 @@ public class UsersListActivity extends AppCompatActivity {
         getDataFromSQLite();
     }
 
+
     /**
      * This method is to fetch all user records from SQLite
      */
     private void getDataFromSQLite() {
-        // AsyncTask is used that SQLite operation not blocks the UI Thread.
+        // AsyncTask is used so that SQLite operation doesnt block the UI Thread.
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... params) {

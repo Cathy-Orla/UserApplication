@@ -15,6 +15,7 @@ public class UsersRecyclerAdapter extends RecyclerView.Adapter<UsersRecyclerAdap
     private List<User> listUsers;
 
     public UsersRecyclerAdapter(List<User> listUsers) {
+
         this.listUsers = listUsers;
     }
 
@@ -50,7 +51,7 @@ public class UsersRecyclerAdapter extends RecyclerView.Adapter<UsersRecyclerAdap
         public AppCompatTextView textViewEmail;
         public AppCompatTextView textViewPassword;
 
-        public UserViewHolder(View view) {
+        private UserViewHolder(View view) {
             super(view);
             textViewName = (AppCompatTextView) view.findViewById(R.id.textViewName);
             textViewEmail = (AppCompatTextView) view.findViewById(R.id.textViewEmail);

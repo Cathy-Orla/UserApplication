@@ -30,6 +30,11 @@
     <string name="name">Name</string>
     <string name="dam">Dam</string>
     <string name="sire">Sire</string>
+    <string name="toProfiles">Access Profiles</string>
+    <string name="text_title2">Profile Database</string>
+    <string name="add_new_profile">Add new profile</string>
+    <string name="horse_profiles">Horse Profiles</string>
+    <string name="settings">Settings</string>
 
     <string-array name="menu">
         <item>Settings</item>
