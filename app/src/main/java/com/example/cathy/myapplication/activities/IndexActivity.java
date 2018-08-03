@@ -28,8 +28,6 @@ public class IndexActivity extends AppCompatActivity implements View.OnClickList
     private AppCompatButton newProfile;
     private AppCompatButton editDetails;
     private AppCompatButton accessProfilesButton;
-    /*private AppCompatTextView profileHeader;
-    private AppCompatTextView horseProfiles;*/
     private DatabaseHelper databaseHelper;
 
 
@@ -41,11 +39,11 @@ public class IndexActivity extends AppCompatActivity implements View.OnClickList
 
 
 
-        Spinner spinner = findViewById(R.id.settings);
+       /*Spinner spinner = findViewById(R.id.settings);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.menu, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(this);
+        spinner.setOnItemSelectedListener(this); */
 
         initViews();
         initListeners();
@@ -57,9 +55,6 @@ public class IndexActivity extends AppCompatActivity implements View.OnClickList
     private void initViews() {
 
         newProfile = (AppCompatButton) findViewById(R.id.newProfile);
-       /* profileHeader = (AppCompatTextView) findViewById(R.id.profileHeader);
-        horseProfiles = (AppCompatTextView) findViewById(R.id.horseProfiles);
-        //profilesList = (RecyclerView) findViewById(R.id.profilesList);*/
         accessProfilesButton = (AppCompatButton) findViewById(R.id.accessProfilesButton);
         Toast.makeText(IndexActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
     }

@@ -6,15 +6,14 @@ import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.widget.NestedScrollView;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatTextView;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.cathy.myapplication.R;
 import com.example.cathy.myapplication.model.Profile;
-import com.example.cathy.myapplication.model.User;
 import com.example.cathy.myapplication.sql.DatabaseHelper;
 
 public class ProfileActivity extends AppCompatActivity implements View.OnClickListener {
@@ -43,7 +42,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) { //added nullable
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         getSupportActionBar().hide();
@@ -76,6 +75,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private void initListeners() {
+
         appCompatButtonProfile.setOnClickListener(this);
     }
 
@@ -107,7 +107,8 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             databaseHelper.addProfile(profile);
 
             // Snack Bar to show success message that record saved successfully, bottom of page
-            Snackbar.make(nestedScrollView, getString(R.string.success_message), Snackbar.LENGTH_LONG).show();
+          //LOGCAT  Snackbar.make(nestedScrollView, getString(R.string.success_message), Snackbar.LENGTH_LONG).show();
+            Toast.makeText(ProfileActivity.this, "Profile Stored Successfully", Toast.LENGTH_SHORT).show();
             emptyInputEditText();
     }
     

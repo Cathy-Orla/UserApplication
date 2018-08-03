@@ -21,7 +21,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     private final AppCompatActivity activity = RegisterActivity.this;
 
-    private NestedScrollView nestedScrollView;
+    private NestedScrollView nestedScrollView2;
 
     private TextInputLayout textInputLayoutName;
     private TextInputLayout textInputLayoutEmail;
@@ -43,7 +43,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_register_manual);
         getSupportActionBar().hide();
 
         initViews();
@@ -52,7 +52,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void initViews() {
-        nestedScrollView = (NestedScrollView) findViewById(R.id.nestedScrollView);
+        nestedScrollView2 = (NestedScrollView) findViewById(R.id.nestedScrollView2);
 
         textInputLayoutName = (TextInputLayout) findViewById(R.id.textInputLayoutName);
         textInputLayoutEmail = (TextInputLayout) findViewById(R.id.textInputLayoutEmail);
@@ -126,12 +126,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             databaseHelper.addUser(user);
 
             // Snack Bar to show success message that record saved successfully, bottom of page
-            Snackbar.make(nestedScrollView, getString(R.string.success_message), Snackbar.LENGTH_LONG).show();
+            Snackbar.make(nestedScrollView2, getString(R.string.success_message), Snackbar.LENGTH_LONG).show();
             emptyInputEditText();
 
         } else {
             // Snack Bar to show error message that record already exists
-            Snackbar.make(nestedScrollView, getString(R.string.error_email_exists), Snackbar.LENGTH_LONG).show();
+            Snackbar.make(nestedScrollView2, getString(R.string.error_email_exists), Snackbar.LENGTH_LONG).show();
         }
     }
     /**

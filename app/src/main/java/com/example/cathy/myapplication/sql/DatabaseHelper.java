@@ -14,7 +14,7 @@ import java.util.List;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     //version, database name and table name
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 3;
     private static final String DATABASE_NAME = "UserManager.db";
 
 
@@ -39,9 +39,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + COLUMN_USER_EMAIL + " TEXT," + COLUMN_USER_PASSWORD + " TEXT" + ")";
     //creating profiles table
     private String CREATE_PROFILE_TABLE = "CREATE TABLE " + TABLE_PROFILE + "(" + COLUMN_PROFILE_ID
-            + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_PROFILE_NAME + "TEXT," + COLUMN_PROFILE_DAM
-            + "TEXT," + COLUMN_PROFILE_SIRE + "TEXT," + COLUMN_PROFILE_AGE + "TEXT," + COLUMN_PROFILE_GENDER + "TEXT,"
-            + COLUMN_PROFILE_PADDOCK + "TEXT" + ")";
+            + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_PROFILE_NAME + " TEXT," + COLUMN_PROFILE_DAM
+            + " TEXT," + COLUMN_PROFILE_SIRE + " TEXT," + COLUMN_PROFILE_AGE + " TEXT," + COLUMN_PROFILE_GENDER + " TEXT,"
+            + COLUMN_PROFILE_PADDOCK + " TEXT" + ")";
 
     // drop table
     private String DROP_USER_TABLE = "DROP TABLE IF EXISTS " + TABLE_USER;
@@ -245,8 +245,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
         values.put(COLUMN_PROFILE_NAME, profile.getName());
-        values.put(COLUMN_PROFILE_DAM, profile.getDam());
         values.put(COLUMN_PROFILE_SIRE, profile.getSire());
+        values.put(COLUMN_PROFILE_DAM, profile.getDam());
         values.put(COLUMN_PROFILE_AGE, profile.getAge());
         values.put(COLUMN_PROFILE_GENDER, profile.getGender());
         values.put(COLUMN_PROFILE_PADDOCK, profile.getPaddock());

@@ -9,7 +9,22 @@
     android:paddingLeft="20dp"
     android:paddingRight="20dp"
     android:paddingTop="20dp"
-    tools:context="com.example.cathy.myapplication.activities.LoginActivity">
+    tools:context="com.example.cathy.myapplication.activities.RegisterActivity">
+
+    <TextView
+        android:id="@+id/profileHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/equitrend"
+        android:textColor="@color/colorAccent"
+        android:textSize="40sp"
+        android:textStyle="bold"
+       />
 
     <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -96,7 +111,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:gravity="center"
-            android:text="Already a member? Login"
-            android:textSize="16dp" />
+            android:text="@string/already_a_member_login"
+            android:textSize="16sp" />
     </android.support.v7.widget.LinearLayoutCompat>
 </android.support.v4.widget.NestedScrollView>
