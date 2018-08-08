@@ -88,8 +88,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         switch (v.getId()) {
             case R.id.appCompatButtonLogin:
                 verifyFromSQLite();
-                Intent intentToMain = new Intent(getApplicationContext(), MainPageActivity.class);
-                startActivity(intentToMain);
+
                 break;
             case R.id.textViewLinkRegister:
                 // Navigate to RegisterActivity
@@ -116,11 +115,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if (databaseHelper.checkUser(textInputEditTextEmail.getText().toString().trim()
                 , textInputEditTextPassword.getText().toString().trim())) {
 
+            Intent intentToMain = new Intent(getApplicationContext(), MainPageActivity.class);
+            startActivity(intentToMain);
 
-          Intent accountsIntent = new Intent(activity, UsersListActivity.class);
+            /*Intent accountsIntent = new Intent(activity, UsersListActivity.class);
             accountsIntent.putExtra("EMAIL", textInputEditTextEmail.getText().toString().trim());
             emptyInputEditText();
-            startActivity(accountsIntent);
+            startActivity(accountsIntent); */
 
 
         } else {

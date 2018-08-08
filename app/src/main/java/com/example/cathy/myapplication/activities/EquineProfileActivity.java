@@ -30,7 +30,7 @@ public class EquineProfileActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_equine_profile);
-        getSupportActionBar().setTitle("");
+        getSupportActionBar().hide();
         initViews();
         initObjects();
 

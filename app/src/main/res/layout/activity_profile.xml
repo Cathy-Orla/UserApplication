@@ -49,6 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/name"
+            android:inputType="text"
             android:maxLines="1"/>
     </android.support.design.widget.TextInputLayout>
 
@@ -74,6 +75,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/dam"
+            android:inputType="text"
             android:maxLines="1"/>
     </android.support.design.widget.TextInputLayout>
 
@@ -99,6 +101,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/sire"
+            android:inputType="text"
             android:maxLines="1"/>
     </android.support.design.widget.TextInputLayout>
 
@@ -124,6 +127,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/age"
+            android:inputType="text"
             android:maxLines="1"/>
     </android.support.design.widget.TextInputLayout>
 
@@ -149,6 +153,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:hint="@string/paddock"
+            android:inputType="text"
             android:maxLines="1"/>
 
     </android.support.design.widget.TextInputLayout>
@@ -175,6 +180,7 @@
             android:layout_width="369dp"
             android:layout_height="wrap_content"
             android:hint="@string/gender"
+            android:inputType="text"
             android:maxLines="1"/>
     </android.support.design.widget.TextInputLayout>
 

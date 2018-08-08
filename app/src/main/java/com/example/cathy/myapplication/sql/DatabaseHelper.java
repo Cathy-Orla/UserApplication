@@ -307,5 +307,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return profileList;
     }
 
+    public void deleteProfileMethod(Profile profile) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        // delete user record by id
+        db.delete(TABLE_PROFILE, COLUMN_PROFILE_ID + " = ?",
+                new String[]{String.valueOf(profile.getId())});
+        db.close();
+    }
 }
 

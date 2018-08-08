@@ -22,6 +22,7 @@ public class MainPageActivity extends AppCompatActivity implements View.OnClickL
     private AppCompatButton newProfile;
     private AppCompatButton accessProfilesButton;
     private DatabaseHelper databaseHelper;
+    private Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,11 +30,11 @@ public class MainPageActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_main_page);
         getSupportActionBar().hide();
 
-        /*Spinner spinner = findViewById(R.id.settings);
+        spinner = findViewById(R.id.settings);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.menu, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(this); */
+        //spinner.setOnItemSelectedListener(this);
 
         initViews();
         initListeners();
@@ -50,6 +51,7 @@ public class MainPageActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void initListeners() {
+        //spinner.setOnItemSelectedListener(this);
         newProfile.setOnClickListener(this);
         accessProfilesButton.setOnClickListener(this);
     }
